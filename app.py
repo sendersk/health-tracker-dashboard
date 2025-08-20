@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from forms import HealthDataForm
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your_secret_key'
 
 # define homepage route and index() view function
 @app.route('/')
@@ -11,8 +12,12 @@ def index():
 @app.route('/form', methods=['POST', 'GET'])
 def form():
     form = HealthDataForm()
-    if request.method == 'POST':
+    if form.validate_on_submit():
         # process form data here
+        date = form.date.data
+        exercise = form.exercise.data
+        meditation = form.meditation.data
+        sleep = form.sleep.data
         return redirect(url_for('dashboard'))
     return render_template('form.html', form=form)
 
