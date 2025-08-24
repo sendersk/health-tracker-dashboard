@@ -1,5 +1,15 @@
 /* Custom Styles for Health Tracker Dashboard */
 
 main.container {
-    height: 560px
+    height: 100vh
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
 }
